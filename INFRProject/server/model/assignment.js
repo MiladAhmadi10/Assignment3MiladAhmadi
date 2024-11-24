@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose");
 
-let bookModel = mongoose.Schema({
+let assignmentModel = mongoose.Schema({
     Name: String,
     Due: String,
     Description: String,
