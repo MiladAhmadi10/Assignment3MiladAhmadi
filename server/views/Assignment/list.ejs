@@ -1,41 +1,51 @@
 <%- include ../Partials/header.ejs%>
 <%- include ../Partials/main_nav.ejs%>
 <!--Book Database-->
-<main class="container">
-    <div class="row">
-        <div class="offset-md-1 col-md-10">
-            <h1><%= title %></h1>
-            <br>
-            <a href="/assignmentslist/add" class="btn btn-primary" role="button">
-                <i class="fas fa-plus-circle"></i> Add Book
-            </a>
-            <table class="table table-bordered table-striped table-hover">
-                <tr class="d-flex">
-                    <th class="text-center col-2">Name</th>
-                    <th class="text-center col-1">Due</th>
-                    <th class="col-4">Description</th>
-                </tr>
-                <% for(let count=0;count<AssignmentList.length;count++) { %>
-                <tr class="d-flex">
-                    <td class="text-center col-2"><%= AssignmentList[count].Name %></td>
-                    <td class="text-center col-1"><%=AssignmentList[count].Due%></td>
-                    <td class="col-4"><%= AssignmentList[count].Description %> </td>
-                    <td class="text-center col-1">
-                        <a href="/assignmentslist/edit/<%= AssignmentList[count]._id%>"
-                            class="btn btn-primary btn-sm">
-                        <i class="fas fa-pencil-alt"></i>Edit
-                    </a>
-                    </td>
-                    <td class="text-center col-1">
-                        <a href="/assignmentslist/delete/<%= AssignmentList[count]._id%>"
-                            class="btn btn-danger btn-sm">
-                        <i class="fas fa-trash-alt"></i>Delete
-                    </a>
-                    </td>
-                </tr>    
-                    <%} %>
-            </table>
+<main class="container my-5">
+    <!-- Title and Add Button -->
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h1 class="text-danger text-uppercase"><%= title %></h1>
         </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col text-end">
+            <a href="/assignmentslist/add" class="btn btn-danger" role="button">
+                <i class="fas fa-plus-circle"></i> Add New Assignment
+            </a>
+        </div>
+    </div>
+
+    <!-- Assignments Table -->
+    <div class="table-responsive">
+        <table class="table table-dark table-hover text-center align-middle">
+            <thead class="table-danger">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Due</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let count=0; count<AssignmentList.length; count++) { %>
+                <tr>
+                    <td><%= AssignmentList[count].Name %></td>
+                    <td><%= AssignmentList[count].Due %></td>
+                    <td><%= AssignmentList[count].Description %></td>
+                    <td>
+                        <a href="/assignmentslist/edit/<%= AssignmentList[count]._id%>" class="btn btn-warning btn-sm me-2">
+                            <i class="fas fa-pencil-alt"></i> Edit
+                        </a>
+                        <a href="/assignmentslist/delete/<%= AssignmentList[count]._id%>" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
     </div>
 </main>
 <%- include ../Partials/footer.ejs%>
