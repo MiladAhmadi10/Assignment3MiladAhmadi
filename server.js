@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('./INFRProject/server/config/app');
+const app = require('./server/config/app');
 var debug = require('debug')('infrproject:server');
 var http = require('http');
 
